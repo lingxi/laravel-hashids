@@ -19,4 +19,37 @@ php artisan vendor:publish
 
 ### Middleware
 
+添加中间件
+
+```php
+\Lingxi\Hashids\Middleware\DecodePublicIdMiddleware::class,
+```
+
+在 config/hashids.php 中去配置需要解密的路由参数以及请求参数
+
 ### Model
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Lingxi\Hashids\ModelTraits\PublicId;
+
+class Post extends Model
+{
+    use PublicId;
+
+    public function comments()
+    {
+        return $this->morphMany(\App\Comment::class, 'commentable');
+    }
+}
+```
+
+Then, get public id.
+
+```php
+Post::first()->publicId
+```
