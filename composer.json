@@ -4,8 +4,8 @@
     "license": "MIT",
     "keywords": ["laravel", "hashids", "hashid", "hash", "ids", "youtube", "bitly", "encrypt", "decrypt", "obfuscate"],
     "require": {
-        "php": "^5.6.4 || ^7.0",
-        "illuminate/support": "^5.3",
+        "php": ">=5.6",
+        "illuminate/support": "*",
         "graham-campbell/manager": "^2.4",
         "hashids/hashids": "^1.0"
     },
