@@ -10,4 +10,5 @@ test:
       - php -v
       - rm -rf vendor
       - composer install -o
+      - mv phpunit.example.xml phpunit.xml
       - phpunit --coverage-text --colors=never
