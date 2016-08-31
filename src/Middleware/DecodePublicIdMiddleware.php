@@ -13,9 +13,9 @@ class DecodePublicIdMiddleware
 
     public function handle($request, Closure $next)
     {
-        $this->init();
+        if ($this->canDecode()) {
+            $this->init();
 
-        if (config('hashids.middleware.open')) {
             try {
                 $this->decodeRouteParameters($request);
 
@@ -51,7 +51,7 @@ class DecodePublicIdMiddleware
         }
     }
 
-    public function decodeRequestParameters($request)
+    protected function decodeRequestParameters($request)
     {
         if ($parameters = $request->all()) {
             foreach ($this->requestParametersShouldDecode as $key) {
@@ -60,5 +60,10 @@ class DecodePublicIdMiddleware
                 }
             }
         }
+    }
+
+    protected function canDecode()
+    {
+        return config('hashids.middleware.open');
     }
 }
