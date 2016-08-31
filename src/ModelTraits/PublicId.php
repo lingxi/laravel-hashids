@@ -1,12 +1,14 @@
 <?php
 
+namespace Lingxi\Hashids\ModelTraits;
+
 trait PublicId
 {
     public function getPublicIdAttribute($connection = null)
     {
         $primaryKey = $this->primaryKey;
 
-        return publicId($primaryKey, getHashIdsConnection($connection));
+        return publicId($this->$primaryKey, getHashIdsConnection($connection));
     }
 
     public function findByPublicId($publicId, $connection = null)
@@ -20,6 +22,6 @@ trait PublicId
 
     public static function getPublicIdMaxInt()
     {
-        return Hashids::get_max_int_value();
+        return app('hashids')->get_max_int_value();
     }
 }

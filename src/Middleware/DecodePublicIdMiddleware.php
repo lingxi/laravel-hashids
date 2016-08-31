@@ -1,5 +1,7 @@
 <?php
 
+namespace Lingxi\Hashids\Middleware;
+
 use Closure;
 use Exception;
 
@@ -15,9 +17,9 @@ class DecodePublicIdMiddleware
 
         if (config('hashids.middleware.open')) {
             try {
-                $this->decodeRouteParameters();
+                $this->decodeRouteParameters($request);
 
-                $this->decodeRequestParameters();
+                $this->decodeRequestParameters($request);
             } catch (Exception $e) {
                 abort(404);
             }
@@ -36,25 +38,25 @@ class DecodePublicIdMiddleware
         }
     }
 
-    protected function decodeRouteParameters()
+    protected function decodeRouteParameters($request)
     {
         if ($route = $request->route()) {
             $parameters = $route->parameters();
 
             foreach ($this->routeParametersShouldDecode as $key) {
                 if (isset($parameters[$key])) {
-                    $route->setParameter($param, trueid($parameters[$key]));
+                    $route->setParameter($key, trueId($parameters[$key]));
                 }
             }
         }
     }
 
-    public function decodeRequestParameters()
+    public function decodeRequestParameters($request)
     {
         if ($parameters = $request->all()) {
             foreach ($this->requestParametersShouldDecode as $key) {
                 if (isset($parameters[$key])) {
-                    $request->merge([$param => trueid($parameters[$key])]);
+                    $request->merge([$key => trueId($parameters[$key])]);
                 }
             }
         }

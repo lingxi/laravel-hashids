@@ -19,7 +19,7 @@
             "Lingxi\\Hashids\\": "src/"
         },
         "files": [
-            "src/helper.php"
+            "include/helper.php"
         ]
     },
     "autoload-dev": {

@@ -53,6 +53,7 @@ class HashidsServiceProvider extends ServiceProvider
         $this->registerFactory();
         $this->registerManager();
         $this->registerBindings();
+        $this->registerRoutes();
     }
 
     /**
@@ -100,6 +101,18 @@ class HashidsServiceProvider extends ServiceProvider
         });
 
         $this->app->alias('hashids.connection', Hashids::class);
+    }
+
+    /**
+     * Register the debug routes.
+     *
+     * @return void
+     */
+    public function registerRoutes()
+    {
+        if (config('app.debug')) {
+            include __DIR__ . '/../include/routes.php';
+        }
     }
 
     /**
