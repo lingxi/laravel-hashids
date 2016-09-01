@@ -3,7 +3,6 @@
 namespace Lingxi\Hashids\Middleware;
 
 use Closure;
-use Exception;
 
 class DecodePublicIdMiddleware
 {
@@ -14,15 +13,9 @@ class DecodePublicIdMiddleware
     public function handle($request, Closure $next)
     {
         if ($this->canDecode()) {
-            $this->init();
-
-            try {
-                $this->decodeRouteParameters($request);
-
-                $this->decodeRequestParameters($request);
-            } catch (Exception $e) {
-                abort(404);
-            }
+            $this->init()
+                 ->decodeRouteParameters($request)
+                 ->decodeRequestParameters($request);
         }
 
         return $next($request);
@@ -36,6 +29,8 @@ class DecodePublicIdMiddleware
         if (method_exists($this, 'prepareConfig')) {
             $this->prepareConfig();
         }
+
+        return $this;
     }
 
     protected function decodeRouteParameters($request)
@@ -49,6 +44,8 @@ class DecodePublicIdMiddleware
                 }
             }
         }
+
+        return $this;
     }
 
     protected function decodeRequestParameters($request)
@@ -60,6 +57,8 @@ class DecodePublicIdMiddleware
                 }
             }
         }
+
+        return $this;
     }
 
     protected function canDecode()
