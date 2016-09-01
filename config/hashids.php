@@ -48,12 +48,14 @@ return [
     'connections' => [
 
         'main' => [
+            'prefix' => '',
             'salt' => 'your-salt-string',
             'length' => 'your-length-integer',
             'alphabet' => 'your-alphabet-string',
         ],
 
         'alternative' => [
+            'prefix' => '',
             'salt' => 'your-salt-string',
             'length' => 'your-length-integer',
             'alphabet' => 'your-alphabet-string',
