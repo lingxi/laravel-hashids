@@ -1,9 +1,10 @@
 <?php
 
-Route::get('/debug/en/{id}', function ($id) {
-    dd(publicId($id, request('c')));
+Route::group(['prefix' => 'debug', 'namespace' => 'Lingxi\Hashids\Controllers'], function () {
+
+    Route::get('/debug/en/{id}', 'DebugController@en');
+
+    Route::get('/debug/de/{id}', 'DebugController@de');
+
 });
 
-Route::get('/debug/de/{id}', function ($id) {
-    dd(trueId($id, request('c')));
-});
