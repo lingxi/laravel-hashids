@@ -54,6 +54,7 @@ class HashidsServiceProvider extends ServiceProvider
         $this->registerManager();
         $this->registerBindings();
         $this->registerRoutes();
+        $this->registerCommands();
     }
 
     /**
@@ -113,6 +114,19 @@ class HashidsServiceProvider extends ServiceProvider
         if (config('app.debug')) {
             include __DIR__ . '/../include/routes.php';
         }
+    }
+
+    /**
+     * Register commands to help debug.
+     *
+     * @return void
+     */
+    public function registerCommands()
+    {
+        $this->commands([
+            'Lingxi\Hashids\Console\Commands\DecodeId',
+            'Lingxi\Hashids\Console\Commands\EncodeId'
+        ]);
     }
 
     /**
