@@ -53,3 +53,9 @@ Then, get public id.
 ```php
 Post::first()->publicId
 ```
+
+### Debug
+
+    php artisan id:en 1 --uri=p
+
+    php artisan id:de sdfghjkla;sdjhasjhdfgahjsdjasd
