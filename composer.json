@@ -5,7 +5,7 @@
     "keywords": ["laravel", "hashids", "hashid", "hash", "ids", "youtube", "bitly", "encrypt", "decrypt", "obfuscate"],
     "require": {
         "php": ">=5.6",
-        "illuminate/support": "*",
+        "illuminate/support": "5.1.*|5.2.*|5.3.*",
         "graham-campbell/manager": "^2.4",
         "hashids/hashids": "^1.0"
     },
@@ -27,20 +27,6 @@
             "Lingxi\\Tests\\Hashids\\": "tests/"
         }
     },
-    "config": {
-        "preferred-install": "dist"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.4-dev"
-        }
-    },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": {
-        "packagist": {
-            "type": "composer",
-            "url": "https://packagist.phpcomposer.com"
-        }
-    }
+    "prefer-stable": true
 }
