@@ -11,7 +11,7 @@ trait PublicId
         return publicId($this->$primaryKey, getHashIdsConnection($connection));
     }
 
-    public function findByPublicId($publicId, $connection = null)
+    public static function findByPublicId($publicId, $connection = null)
     {
         $connection = getHashIdsConnection($connection);
 
