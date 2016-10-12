@@ -24,11 +24,12 @@ return [
    'middleware' => [
         'open' => true,
 
-        // 中间件中需要被 decode 的 id
+        // 路由中需要被 decode 的 id
         'route_parameters' => [
             //
         ],
 
+        // 请求参数需要被 decode 的 id
         'request_parameters' => [
             //
         ]
