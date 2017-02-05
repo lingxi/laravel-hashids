@@ -11,7 +11,7 @@ class DebugController extends Controller
         dd(publicId($id, request('c')));
     }
 
-    public function de()
+    public function de($id)
     {
         dd(trueId($id, request('c')));
     }
