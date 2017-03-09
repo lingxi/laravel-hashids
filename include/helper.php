@@ -1,7 +1,5 @@
 <?php
 
-use InvalidArgumentException;
-
 function trueId($publicId, $connection = null)
 {
     $connection = getHashIdsConnection($connection);
