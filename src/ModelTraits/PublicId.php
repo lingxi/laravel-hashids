@@ -2,20 +2,22 @@
 
 namespace Lingxi\Hashids\ModelTraits;
 
+use Lingxi\Hashids\publicId;
+
 trait PublicId
 {
     public function getPublicIdAttribute($connection = null)
     {
         $primaryKey = $this->primaryKey;
 
-        return publicId($this->$primaryKey, getHashIdsConnection($connection));
+        return Hashids::publicId($this->$primaryKey, getHashIdsConnection($connection));
     }
 
     public static function findByPublicId($publicId, $connection = null)
     {
         $connection = getHashIdsConnection($connection);
 
-        $id = trueid($publicId);
+        $id = Hashids::trueId($publicId);
 
         return $id ? self::find($id) : null;
     }

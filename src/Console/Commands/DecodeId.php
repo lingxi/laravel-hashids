@@ -42,6 +42,6 @@ class DecodeId extends Command
 
         $connection = $this->option('connection');
 
-        $this->info(trueId($this->argument('publicId'), $connection));
+        $this->info(Hashids::trueId($this->argument('publicId'), $connection));
     }
 }

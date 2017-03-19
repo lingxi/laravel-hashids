@@ -2,6 +2,7 @@
 
 namespace Lingxi\Hashids\Console\Commands;
 
+use Lingxi\Hashids\Hashids;
 use Illuminate\Console\Command;
 
 class EncodeId extends Command
@@ -44,9 +45,9 @@ class EncodeId extends Command
         $connection = $this->option('connection');
 
         if ($this->option('uri')) {
-            $result = config('app.url') . '/' . $this->option('uri') . '/' . publicId($this->argument('trueId'));
+            $result = config('app.url') . '/' . $this->option('uri') . '/' . Hashids::publicId($this->argument('trueId'));
         } else {
-            $result = publicId($this->argument('trueId'));
+            $result = Hashids::publicId($this->argument('trueId'));
         }
 
         $this->info($result);

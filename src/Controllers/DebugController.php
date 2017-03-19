@@ -2,17 +2,18 @@
 
 namespace Lingxi\Hashids\Controllers;
 
+use Lingxi\Hashids\Hashids;
 use Illuminate\Routing\Controller;
 
 class DebugController extends Controller
 {
     public function en($id)
     {
-        dd(publicId($id, request('c')));
+        dd(Hashids::publicId($id, request('c')));
     }
 
     public function de($id)
     {
-        dd(trueId($id, request('c')));
+        dd(Hashids::trueId($id, request('c')));
     }
 }

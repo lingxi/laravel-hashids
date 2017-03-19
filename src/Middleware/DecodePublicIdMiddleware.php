@@ -3,6 +3,7 @@
 namespace Lingxi\Hashids\Middleware;
 
 use Closure;
+use Lingxi\Hashids\Hashids;
 
 class DecodePublicIdMiddleware
 {
@@ -40,7 +41,7 @@ class DecodePublicIdMiddleware
 
             foreach ($this->routeParametersShouldDecode as $key) {
                 if (isset($parameters[$key])) {
-                    $route->setParameter($key, trueId($parameters[$key]));
+                    $route->setParameter($key, Hashids::trueId($parameters[$key]));
                 }
             }
         }
@@ -53,7 +54,7 @@ class DecodePublicIdMiddleware
         if ($parameters = $request->all()) {
             foreach ($this->requestParametersShouldDecode as $key) {
                 if (isset($parameters[$key])) {
-                    $request->merge([$key => trueId($parameters[$key])]);
+                    $request->merge([$key => Hashids::trueId($parameters[$key])]);
                 }
             }
         }
