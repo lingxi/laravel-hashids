@@ -1,33 +1,27 @@
 <?php
 
-function trueId($publicId, $connection = null)
-{
-    $connection = getHashIdsConnection($connection);
+use Lingxi\Hashids\Hashids;
 
-    $hashids = app('hashids')->connection($connection);
-    $id = $hashids->decode(substr($publicId, strlen(config('hashids.connections.' . $connection . '.prefix')), strlen($publicId)));
-
-    return is_array($id) && isset($id[0]) ? $id[0] : null;
+if (! function_exists('true_id')) {
+    function true_id($publicId, $connection = null) {
+        return Hashids::trueId($publicId, $connection);
+    }
 }
 
-function publicId($id, $connection = null)
-{
-    $connection = getHashIdsConnection($connection);
-
-    $hashids = app('hashids')->connection($connection);
-
-    return config('hashids.connections.' . $connection . '.prefix') . $hashids->encode($id);
+if (! function_exists('trueId')) {
+    function true_id($publicId, $connection = null) {
+        return Hashids::trueId($publicId, $connection);
+    }
 }
 
-function getHashIdsConnection($connection = null)
-{
-    if ($connection) {
-        if (! isset(config('hashids.connections')[$connection])) {
-            throw new InvalidArgumentException('hashids ' . $connection . ' not config.');
-        }
+if (! function_exists('public_id')) {
+    function true_id($id, $connection = null) {
+        return Hashids::publicId($id, $connection);
+    }
+}
 
-        return $connection;
-    } else {
-        return config('hashids.default');
+if (! function_exists('publicId')) {
+    function true_id($id, $connection = null) {
+        return Hashids::publicId($id, $connection);
     }
 }
