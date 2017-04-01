@@ -11,7 +11,8 @@ class Hashids
         $connection = $this->getHashIdsConnection($connection);
 
         $hashids = app('hashids')->connection($connection);
-        $id = $hashids->decode(substr($publicId, strlen(config('hashids.connections.' . $connection . '.prefix')), strlen($publicId)));
+        $hash = substr($publicId, strlen(config('hashids.connections.' . $connection . '.prefix')));
+        $id = $hashids->decode($hash);
 
         if (is_array($id)) {
             switch (count($id)) {

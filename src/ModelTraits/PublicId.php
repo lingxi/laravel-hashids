@@ -10,14 +10,12 @@ trait PublicId
     {
         $primaryKey = $this->primaryKey;
 
-        return Hashids::publicId($this->$primaryKey, getHashIdsConnection($connection));
+        return Hashids::publicId($this->$primaryKey, $connection);
     }
 
     public static function findByPublicId($publicId, $connection = null)
     {
-        $connection = getHashIdsConnection($connection);
-
-        $id = Hashids::trueId($publicId);
+        $id = Hashids::trueId($publicId, $connection);
 
         return $id ? self::find($id) : null;
     }
