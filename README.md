@@ -1,6 +1,14 @@
 Laravel Hashids
 ===============
 
+[![Latest Stable Version](https://poser.pugx.org/lingxi/hashids/v/stable)](https://packagist.org/packages/lingxi/hashids)[![Total Downloads](https://poser.pugx.org/lingxi/hashids/downloads)](https://packagist.org/packages/lingxi/hashids)[![License](https://poser.pugx.org/lingxi/hashids/license)](https://packagist.org/packages/lingxi/hashids)
+
+### 安装
+
+```bash
+composer require lingxi/hashids
+```
+
 ### 添加到 app.php
 
 ```php
