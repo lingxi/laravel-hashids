@@ -51,7 +51,7 @@ class Post extends Model
 Then, get public id.
 
 ```php
-Post::first()->publicId
+Post::first()->public_id
 ```
 
 ### Debug
