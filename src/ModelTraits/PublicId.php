@@ -2,7 +2,7 @@
 
 namespace Lingxi\Hashids\ModelTraits;
 
-use Lingxi\Hashids\publicId;
+use Lingxi\Hashids\Hashids;
 
 trait PublicId
 {
