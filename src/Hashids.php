@@ -6,9 +6,9 @@ use InvalidArgumentException;
 
 class Hashids
 {
-    public function trueId($publicId, $connection = null)
+    public static function trueId($publicId, $connection = null)
     {
-        $connection = $this->getHashIdsConnection($connection);
+        $connection = static::getHashIdsConnection($connection);
 
         $hashids = app('hashids')->connection($connection);
         $hash = substr($publicId, strlen(config('hashids.connections.' . $connection . '.prefix')));
@@ -30,16 +30,16 @@ class Hashids
         }
     }
 
-    public function publicId($id, $connection = null)
+    public static function publicId($id, $connection = null)
     {
-        $connection = $this->getHashIdsConnection($connection);
+        $connection = static::getHashIdsConnection($connection);
 
         $hashids = app('hashids')->connection($connection);
 
         return config('hashids.connections.' . $connection . '.prefix') . $hashids->encode($id);
     }
 
-    protected function getHashIdsConnection($connection = null)
+    protected static function getHashIdsConnection($connection = null)
     {
         if ($connection) {
             if (! isset(config('hashids.connections')[$connection])) {
