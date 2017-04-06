@@ -22,12 +22,14 @@ Lingxi\Hashids\HashidsServiceProvider::class
 ### Config
 
 ```bash
-php artisan vendor:publish
+php artisan vendor:public --provider='Lingxi\Hashids\HashidsServiceProvider'
 ```
 
 ### Middleware
 
 添加中间件
+
+> 如果是全局中间件，那么对 route 参数是无法自动 decode 的
 
 ```php
 \Lingxi\Hashids\Middleware\DecodePublicIdMiddleware::class,
