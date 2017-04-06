@@ -3,6 +3,7 @@
 namespace Lingxi\Hashids;
 
 use InvalidArgumentException;
+use Lingxi\Hashids\Exceptions\DecodeException;
 
 class Hashids
 {
@@ -17,7 +18,7 @@ class Hashids
         if (is_array($id)) {
             switch (count($id)) {
                 case 0:
-                    return null;
+                    throw new DecodeException('Decode ' . $publicId . ' error.');
 
                 case 1:
                     return $id[0];
