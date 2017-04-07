@@ -22,7 +22,7 @@ Lingxi\Hashids\HashidsServiceProvider::class
 ### Config
 
 ```bash
-php artisan vendor:public --provider='Lingxi\Hashids\HashidsServiceProvider'
+php artisan vendor:publish --provider='Lingxi\Hashids\HashidsServiceProvider'
 ```
 
 ### Middleware

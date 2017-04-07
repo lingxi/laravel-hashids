@@ -2,6 +2,7 @@
 
 namespace Lingxi\Hashids\Console\Commands;
 
+use Lingxi\Hashids\Hashids;
 use Illuminate\Console\Command;
 
 class DecodeId extends Command
