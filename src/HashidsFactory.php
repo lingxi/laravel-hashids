@@ -2,7 +2,7 @@
 
 namespace Lingxi\Hashids;
 
-use Hashids\Hashids;
+use Hashids\Hashids as HashId;
 
 class HashidsFactory
 {
@@ -47,6 +47,6 @@ class HashidsFactory
      */
     protected function getClient(array $config)
     {
-        return new Hashids($config['salt'], $config['length'], $config['alphabet']);
+        return new HashId($config['salt'], $config['length'], $config['alphabet']);
     }
 }
