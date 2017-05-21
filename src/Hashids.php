@@ -18,7 +18,13 @@ class Hashids
         if (is_array($id)) {
             switch (count($id)) {
                 case 0:
-                    throw new DecodeException('Decode ' . $publicId . ' error.');
+                    $strictMode = config('hashids.strict');
+
+                    if ($strictMode['enable']) {
+                        throw new DecodeException('Decode ' . $publicId . ' error.');
+                    }
+
+                    return $strictMode['default'];
 
                 case 1:
                     return $id[0];
