@@ -3,17 +3,6 @@
     "description": "A Hashids bridge for Laravel",
     "license": "MIT",
     "keywords": ["laravel", "hashids", "hashid", "encrypt", "decrypt"],
-    "require": {
-        "php": ">=5.6",
-        "illuminate/support": "~5.0",
-        "graham-campbell/manager": "^2.4",
-        "hashids/hashids": "^1.0"
-    },
-    "require-dev": {
-        "graham-campbell/testbench": "^3.2",
-        "mockery/mockery": "^0.9.5",
-        "phpunit/phpunit": "^5.4"
-    },
     "autoload": {
         "psr-4": {
             "Lingxi\\Hashids\\": "src/"
@@ -28,5 +17,21 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    },
+    "require": {
+        "illuminate/support": "5.5.*|5.6.*",
+        "graham-campbell/manager": "^4.0",
+        "hashids/hashids": "^2.0"
+    },
+    "require-dev": {
+        "graham-campbell/testbench": "^5.0",
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^6.5|^7.0"
+    }
 }
